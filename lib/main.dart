@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 
 void main() {
@@ -12,6 +13,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: GoogleFonts.getTextTheme('Jua'),
+      ),
       home: OnbordingPage(),
     );
   }
@@ -68,7 +72,33 @@ class OnbordingPage extends StatelessWidget {
         done: Text("Done", style: TextStyle(fontWeight: FontWeight.w600)),
         onDone: () {
           // When done button is press
+          Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ));
         },
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Home Page!"),
+      ),
+      body: Center(
+        child: Text(
+          "환영 합니다.",
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
       ),
     );
   }
